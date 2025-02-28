@@ -6,7 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="style.css">
-
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script type="text/javascript">
+      (function () {
+          emailjs.init("xyTbayaqJyPU6qNzN"); // Your Public Key
+      })();
+  </script>
   <style>
     @media (max-width: 768px) {
       .faltu img {
@@ -581,7 +586,18 @@
 <script src="js/jquery.js"></script>
 <script src="js/typed.min.js"></script>
 <script src="js/script.js"></script>
-<script>
+<script type="text/javascript">
+  window.onload = function () {
+      emailjs.send("service_jswpe1j", "template_m5oc0xk", {
+          message: "Your website has been opened",
+          user_email: "mitinjangid3536@gmail.com" // Make sure this matches your template variables
+      }).then(function (response) {
+          console.log("Email sent successfully!", response.status, response.text);
+      }, function (error) {
+          console.error("Failed to send email", error);
+      });
+  };
+
   $(document).ready(function () {
     $('.container12').mouseenter(function () {
       $('.card12').stop().animate({
